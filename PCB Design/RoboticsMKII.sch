@@ -55,8 +55,8 @@ S 4800 5500 2400 500
 U 550F3C71
 F0 "power" 60
 F1 "power.sch" 60
-F2 "V_Battery" I L 4800 5700 60 
-F3 "V_USB" I L 4800 5600 60 
+F2 "V_USB" I L 4800 5600 60 
+F3 "V_Battery" O L 4800 5700 60 
 $EndSheet
 $Sheet
 S 1100 3150 2400 1950
