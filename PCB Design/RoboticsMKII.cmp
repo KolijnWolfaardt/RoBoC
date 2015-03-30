@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-03-27 BZR 5543)-product   date = Sun 29 Mar 2015 19:34:47 SAST
+Cmp-Mod V01 Created by Cvpcb (2015-03-23 BZR 5533)-product   date = Mon 30 Mar 2015 16:42:20 SAST
 
 BeginCmp
 TimeStamp = /550F3C71/55125943;
@@ -501,7 +501,7 @@ BeginCmp
 TimeStamp = /550F3C71/55184149;
 Reference = R15;
 ValeurCmp = R;
-IdModule  = ;
+IdModule  = Resistors_SMD:R_1206;
 EndCmp
 
 BeginCmp
@@ -529,7 +529,7 @@ BeginCmp
 TimeStamp = /550F3C71/551257AE;
 Reference = U1;
 ValeurCmp = 3.3VREG;
-IdModule  = ;
+IdModule  = SMD_Packages:SOT-223;
 EndCmp
 
 BeginCmp
@@ -557,14 +557,14 @@ BeginCmp
 TimeStamp = /550F45E9/55102DA2;
 Reference = X1;
 ValeurCmp = 12MHz;
-IdModule  = ;
+IdModule  = RoBoC:Crystal 6x 3.5 x 1.1mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CEC/550F4526;
 Reference = X2;
 ValeurCmp = 10MHz;
-IdModule  = ;
+IdModule  = RoBoC:Crystal 6x 3.5 x 1.1mm;
 EndCmp
 
 EndListe
