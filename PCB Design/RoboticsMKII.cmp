@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-03-23 BZR 5533)-product   date = Sat 28 Mar 2015 16:16:59 SAST
+Cmp-Mod V01 Created by Cvpcb (2015-03-27 BZR 5543)-product   date = Sun 29 Mar 2015 19:34:47 SAST
 
 BeginCmp
 TimeStamp = /550F3C71/55125943;
@@ -101,14 +101,14 @@ EndCmp
 BeginCmp
 TimeStamp = /550F45E9/55102E6B;
 Reference = C15;
-ValeurCmp = C;
+ValeurCmp = 22pF;
 IdModule  = Capacitors_SMD:C_1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F45E9/55102F06;
 Reference = C16;
-ValeurCmp = C;
+ValeurCmp = 22pF;
 IdModule  = Capacitors_SMD:C_1206;
 EndCmp
 
@@ -228,6 +228,69 @@ BeginCmp
 TimeStamp = /550F3C71/5513F6F1;
 Reference = D9;
 ValeurCmp = D;
+IdModule  = ;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F3C8C/55182139;
+Reference = D10;
+ValeurCmp = D;
+IdModule  = ;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F3C8C/55182145;
+Reference = D11;
+ValeurCmp = D;
+IdModule  = ;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F3C8C/551816B5;
+Reference = D12;
+ValeurCmp = D;
+IdModule  = ;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F3C8C/5518177A;
+Reference = D13;
+ValeurCmp = D;
+IdModule  = ;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F3C8C/5518213F;
+Reference = D14;
+ValeurCmp = D;
+IdModule  = ;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F3C8C/5518214B;
+Reference = D15;
+ValeurCmp = D;
+IdModule  = ;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F3C8C/55181742;
+Reference = D16;
+ValeurCmp = D;
+IdModule  = ;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F3C8C/551817DE;
+Reference = D17;
+ValeurCmp = D;
+IdModule  = ;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F3C71/551840ED;
+Reference = D18;
+ValeurCmp = LED;
 IdModule  = ;
 EndCmp
 
@@ -435,6 +498,13 @@ IdModule  = Resistors_SMD:R_1206;
 EndCmp
 
 BeginCmp
+TimeStamp = /550F3C71/55184149;
+Reference = R15;
+ValeurCmp = R;
+IdModule  = ;
+EndCmp
+
+BeginCmp
 TimeStamp = /550F3CEC/5510500A;
 Reference = RESET1;
 ValeurCmp = DPST;
@@ -466,21 +536,21 @@ BeginCmp
 TimeStamp = /550F3C8C/5511E05F;
 Reference = U2;
 ValeurCmp = LV8405V;
-IdModule  = ;
+IdModule  = Housings_SSOP:SSOP-16_4.4x5.2mm_Pitch0.65mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F45E9/551026B8;
 Reference = U3;
 ValeurCmp = MCP2200;
-IdModule  = ;
+IdModule  = Housings_SOIC:SOIC-20_7.5x12.8mm_Pitch1.27mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CEC/550F449E;
 Reference = U4;
 ValeurCmp = dsPIC33FJ32GS606;
-IdModule  = ;
+IdModule  = Housings_QFP:TQFP-64_10x10mm_Pitch0.5mm;
 EndCmp
 
 BeginCmp

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <export version="D">
   <design>
-    <source>/home/kolijn/RoBoC/PCB Design/RoboticsMKII.sch</source>
-    <date>Sat 28 Mar 2015 16:49:17 SAST</date>
-    <tool>Eeschema (2015-03-23 BZR 5533)-product</tool>
+    <source>/home/kolijn/Desktop/RoBoC/PCB Design/RoboticsMKII.sch</source>
+    <date>Sun 29 Mar 2015 12:36:24 SAST</date>
+    <tool>Eeschema (2015-03-27 BZR 5543)-product</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title/>
@@ -802,34 +802,6 @@
         <pin num="9" name="SHELL4" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="mcp2200" part="MCP2200">
-      <fields>
-        <field name="Reference">U</field>
-        <field name="Value">MCP2200</field>
-      </fields>
-      <pins>
-        <pin num="1" name="VDD" type="power_in"/>
-        <pin num="2" name="OSC1" type="input"/>
-        <pin num="3" name="OSC2" type="input"/>
-        <pin num="4" name="~RST" type="input"/>
-        <pin num="5" name="TxLED" type="input"/>
-        <pin num="6" name="RxLED" type="input"/>
-        <pin num="7" name="GP5" type="input"/>
-        <pin num="8" name="GP4" type="input"/>
-        <pin num="9" name="GP3" type="input"/>
-        <pin num="10" name="TX" type="input"/>
-        <pin num="11" name="~RTS" type="input"/>
-        <pin num="12" name="RX" type="input"/>
-        <pin num="13" name="~CTS" type="input"/>
-        <pin num="14" name="GP2" type="input"/>
-        <pin num="15" name="GP1/CFG" type="input"/>
-        <pin num="16" name="GP0/SSPND" type="input"/>
-        <pin num="17" name="Vusb" type="input"/>
-        <pin num="18" name="D-" type="input"/>
-        <pin num="19" name="D+" type="input"/>
-        <pin num="20" name="Vss" type="power_in"/>
-      </pins>
-    </libpart>
     <libpart lib="dspic33fj32gs606" part="dsPIC33FJ32GS606">
       <fields>
         <field name="Reference">U</field>
@@ -902,6 +874,34 @@
         <pin num="64" name="PWM3L/RE4" type="BiDi"/>
       </pins>
     </libpart>
+    <libpart lib="mcp2200" part="MCP2200">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MCP2200</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VDD" type="power_in"/>
+        <pin num="2" name="OSC1" type="input"/>
+        <pin num="3" name="OSC2" type="input"/>
+        <pin num="4" name="~RST" type="input"/>
+        <pin num="5" name="TxLED" type="input"/>
+        <pin num="6" name="RxLED" type="input"/>
+        <pin num="7" name="GP5" type="input"/>
+        <pin num="8" name="GP4" type="input"/>
+        <pin num="9" name="GP3" type="input"/>
+        <pin num="10" name="TX" type="input"/>
+        <pin num="11" name="~RTS" type="input"/>
+        <pin num="12" name="RX" type="input"/>
+        <pin num="13" name="~CTS" type="input"/>
+        <pin num="14" name="GP2" type="input"/>
+        <pin num="15" name="GP1/CFG" type="input"/>
+        <pin num="16" name="GP0/SSPND" type="input"/>
+        <pin num="17" name="Vusb" type="input"/>
+        <pin num="18" name="D-" type="input"/>
+        <pin num="19" name="D+" type="input"/>
+        <pin num="20" name="Vss" type="power_in"/>
+      </pins>
+    </libpart>
     <libpart lib="33vReg" part="3.3VREG">
       <fields>
         <field name="Reference">U</field>
@@ -967,20 +967,20 @@
     <library logical="conn">
       <uri>/usr/local/share/kicad/library/conn.lib</uri>
     </library>
-    <library logical="dspic33fj32gs606">
-      <uri>/home/kolijn/RoBoC/PCB Design/lib/dspic33fj32gs606.lib</uri>
-    </library>
     <library logical="mcp2200">
-      <uri>/home/kolijn/RoBoC/PCB Design/lib/mcp2200.lib</uri>
+      <uri>/home/kolijn/Desktop/RoBoC/PCB Design/lib/mcp2200.lib</uri>
+    </library>
+    <library logical="dspic33fj32gs606">
+      <uri>/home/kolijn/Desktop/RoBoC/PCB Design/lib/dspic33fj32gs606.lib</uri>
     </library>
     <library logical="lv8405v">
-      <uri>/home/kolijn/RoBoC/PCB Design/lib/lv8405v.lib</uri>
+      <uri>/home/kolijn/Desktop/RoBoC/PCB Design/lib/lv8405v.lib</uri>
     </library>
     <library logical="33vReg">
-      <uri>/home/kolijn/RoBoC/PCB Design/lib/33vReg.lib</uri>
+      <uri>/home/kolijn/Desktop/RoBoC/PCB Design/lib/33vReg.lib</uri>
     </library>
     <library logical="RoboticsMKII-cache">
-      <uri>/home/kolijn/RoBoC/PCB Design/RoboticsMKII-cache.lib</uri>
+      <uri>/home/kolijn/Desktop/RoBoC/PCB Design/RoboticsMKII-cache.lib</uri>
     </library>
   </libraries>
   <nets>
