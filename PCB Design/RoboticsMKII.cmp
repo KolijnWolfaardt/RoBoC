@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-03-23 BZR 5533)-product   date = Mon 30 Mar 2015 16:42:20 SAST
+Cmp-Mod V01 Created by Cvpcb (2015-03-23 BZR 5533)-product   date = Tue 31 Mar 2015 10:52:08 SAST
 
 BeginCmp
 TimeStamp = /550F3C71/55125943;
@@ -101,14 +101,14 @@ EndCmp
 BeginCmp
 TimeStamp = /550F45E9/55102E6B;
 Reference = C15;
-ValeurCmp = 22pF;
+ValeurCmp = 12pF;
 IdModule  = Capacitors_SMD:C_1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F45E9/55102F06;
 Reference = C16;
-ValeurCmp = 22pF;
+ValeurCmp = 12pF;
 IdModule  = Capacitors_SMD:C_1206;
 EndCmp
 
@@ -122,14 +122,14 @@ EndCmp
 BeginCmp
 TimeStamp = /550F3CEC/550F452D;
 Reference = C18;
-ValeurCmp = 22pF;
+ValeurCmp = 12pF;
 IdModule  = Capacitors_SMD:C_1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CEC/550F4534;
 Reference = C19;
-ValeurCmp = 22pF;
+ValeurCmp = 12pF;
 IdModule  = Capacitors_SMD:C_1206;
 EndCmp
 
@@ -164,63 +164,70 @@ EndCmp
 BeginCmp
 TimeStamp = /550F45E9/55102938;
 Reference = CON1;
-ValeurCmp = USB-MICRO-B;
-IdModule  = ;
+ValeurCmp = USB;
+IdModule  = RoBoC:USB_Micro;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F3C71/551A8563;
+Reference = CON2;
+ValeurCmp = BARREL_JACK;
+IdModule  = Connect:BARREL_JACK;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CBF/55118C0D;
 Reference = D1;
-ValeurCmp = LED;
+ValeurCmp = LED5;
 IdModule  = LEDs:LED-1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CBF/55107D2B;
 Reference = D2;
-ValeurCmp = LED;
+ValeurCmp = LED4;
 IdModule  = LEDs:LED-1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CBF/55107DAE;
 Reference = D3;
-ValeurCmp = LED;
+ValeurCmp = LED3;
 IdModule  = LEDs:LED-1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CBF/55107DCD;
 Reference = D4;
-ValeurCmp = LED;
+ValeurCmp = LED2;
 IdModule  = LEDs:LED-1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CBF/55107E0F;
 Reference = D5;
-ValeurCmp = LED;
+ValeurCmp = LED1;
 IdModule  = LEDs:LED-1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CBF/55107E30;
 Reference = D6;
-ValeurCmp = LED;
+ValeurCmp = LED0;
 IdModule  = LEDs:LED-1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F45E9/55102AE3;
 Reference = D7;
-ValeurCmp = LED;
+ValeurCmp = TX LED;
 IdModule  = LEDs:LED-1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F45E9/55102B1C;
 Reference = D8;
-ValeurCmp = LED;
+ValeurCmp = RX LED;
 IdModule  = LEDs:LED-1206;
 EndCmp
 
@@ -228,175 +235,196 @@ BeginCmp
 TimeStamp = /550F3C71/5513F6F1;
 Reference = D9;
 ValeurCmp = D;
-IdModule  = ;
+IdModule  = Diodes_SMD:Diode-SMC_Handsoldering;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/55182139;
 Reference = D10;
 ValeurCmp = D;
-IdModule  = ;
+IdModule  = Diodes_SMD:SOD-323;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/55182145;
 Reference = D11;
 ValeurCmp = D;
-IdModule  = ;
+IdModule  = Diodes_SMD:SOD-323;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/551816B5;
 Reference = D12;
 ValeurCmp = D;
-IdModule  = ;
+IdModule  = Diodes_SMD:SOD-323;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/5518177A;
 Reference = D13;
 ValeurCmp = D;
-IdModule  = ;
+IdModule  = Diodes_SMD:SOD-323;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/5518213F;
 Reference = D14;
 ValeurCmp = D;
-IdModule  = ;
+IdModule  = Diodes_SMD:SOD-323;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/5518214B;
 Reference = D15;
 ValeurCmp = D;
-IdModule  = ;
+IdModule  = Diodes_SMD:SOD-323;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/55181742;
 Reference = D16;
 ValeurCmp = D;
-IdModule  = ;
+IdModule  = Diodes_SMD:SOD-323;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/551817DE;
 Reference = D17;
 ValeurCmp = D;
-IdModule  = ;
+IdModule  = Diodes_SMD:SOD-323;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C71/551840ED;
 Reference = D18;
-ValeurCmp = LED;
-IdModule  = ;
+ValeurCmp = Power Led;
+IdModule  = LEDs:LED-1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C71/551265E8;
 Reference = F1;
 ValeurCmp = FUSE;
-IdModule  = ;
+IdModule  = Resistors_SMD:R_1206_HandSoldering;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C71/551253FD;
 Reference = P1;
-ValeurCmp = CONN_01X03;
+ValeurCmp = Power Sel;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
-EndCmp
-
-BeginCmp
-TimeStamp = /550F3C71/551263E1;
-Reference = P2;
-ValeurCmp = CONN_01X02;
-IdModule  = ;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/5511F6F8;
 Reference = P3;
-ValeurCmp = CONN_01X03;
+ValeurCmp = Encoder 1;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/5511E833;
 Reference = P4;
-ValeurCmp = CONN_01X03;
+ValeurCmp = Motor 1;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/5511E7B0;
 Reference = P5;
-ValeurCmp = CONN_01X03;
+ValeurCmp = Motor 2;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/5511FCD2;
 Reference = P6;
-ValeurCmp = CONN_01X03;
+ValeurCmp = Encoder 2;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/5511E558;
 Reference = P7;
-ValeurCmp = CONN_01X03;
+ValeurCmp = PWM 1;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/5511E6D4;
 Reference = P8;
-ValeurCmp = CONN_01X03;
+ValeurCmp = PWM 2;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CBF/55119261;
 Reference = P9;
-ValeurCmp = CONN_01X08;
+ValeurCmp = Analog;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CBF/55110EFC;
 Reference = P10;
-ValeurCmp = CONN_02X11;
+ValeurCmp = Camera;
 IdModule  = Pin_Headers:Pin_Header_Straight_2x11;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CBF/5511E1D2;
 Reference = P11;
-ValeurCmp = CONN_01X03;
+ValeurCmp = DAC;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CBF/551196C9;
 Reference = P12;
-ValeurCmp = CONN_01X02;
+ValeurCmp = Reed;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CBF/5511B047;
 Reference = P13;
-ValeurCmp = CONN_01X06;
+ValeurCmp = SPI;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x06;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CEC/550F44A5;
 Reference = P14;
-ValeurCmp = CONN_01X06;
+ValeurCmp = ICSP;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x06;
+EndCmp
+
+BeginCmp
+TimeStamp = /551B08EA;
+Reference = P96;
+ValeurCmp = CONN_01X01;
+IdModule  = RoBoC:MountingHole3mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /551B0A44;
+Reference = P97;
+ValeurCmp = CONN_01X01;
+IdModule  = RoBoC:MountingHole3mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /551B0790;
+Reference = P98;
+ValeurCmp = CONN_01X01;
+IdModule  = RoBoC:MountingHole3mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /551B0034;
+Reference = P99;
+ValeurCmp = CONN_01X01;
+IdModule  = RoBoC:MountingHole3mm;
 EndCmp
 
 BeginCmp
@@ -500,7 +528,7 @@ EndCmp
 BeginCmp
 TimeStamp = /550F3C71/55184149;
 Reference = R15;
-ValeurCmp = R;
+ValeurCmp = 220;
 IdModule  = Resistors_SMD:R_1206;
 EndCmp
 
@@ -514,14 +542,14 @@ EndCmp
 BeginCmp
 TimeStamp = /550F3CBF/5510AA84;
 Reference = SW0;
-ValeurCmp = DPST;
+ValeurCmp = But 0;
 IdModule  = Buttons_Switches_SMD:SW_SPST_PTS645;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CBF/5510B4BE;
 Reference = SW1;
-ValeurCmp = DPST;
+ValeurCmp = But 1;
 IdModule  = Buttons_Switches_SMD:SW_SPST_PTS645;
 EndCmp
 
@@ -554,7 +582,7 @@ IdModule  = Housings_QFP:TQFP-64_10x10mm_Pitch0.5mm;
 EndCmp
 
 BeginCmp
-TimeStamp = /550F45E9/55102DA2;
+TimeStamp = /550F45E9/55192ECE;
 Reference = X1;
 ValeurCmp = 12MHz;
 IdModule  = RoBoC:Crystal 6x 3.5 x 1.1mm;
