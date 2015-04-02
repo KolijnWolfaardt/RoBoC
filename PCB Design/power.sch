@@ -302,7 +302,7 @@ F 3 "" H 2950 3250 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2950 3100 2950 3250
+	2950 3000 2950 3250
 $Comp
 L FUSE F1
 U 1 1 551265E8
@@ -436,6 +436,10 @@ Wire Wire Line
 Wire Wire Line
 	9350 3900 9350 3950
 Connection ~ 8700 3900
+Wire Wire Line
+	2800 3100 2950 3100
+Wire Wire Line
+	2800 2900 3350 2900
 $Comp
 L BARREL_JACK CON2
 U 1 1 551A8563
@@ -448,8 +452,6 @@ F 3 "" H 2500 3000 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2800 3100 2950 3100
-Wire Wire Line
-	2800 2900 3350 2900
-NoConn ~ 2800 3000
+	2800 3000 2950 3000
+Connection ~ 2950 3100
 $EndSCHEMATC
