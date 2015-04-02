@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-03-23 BZR 5533)-product   date = Tue 31 Mar 2015 10:52:08 SAST
+Cmp-Mod V01 Created by Cvpcb (2015-03-23 BZR 5533)-product   date = Thu 02 Apr 2015 10:04:13 SAST
 
 BeginCmp
 TimeStamp = /550F3C71/55125943;
@@ -316,6 +316,13 @@ IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
+TimeStamp = /550F3CBF/551D10AE;
+Reference = P2;
+ValeurCmp = 3.3v;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x05;
+EndCmp
+
+BeginCmp
 TimeStamp = /550F3C8C/5511F6F8;
 Reference = P3;
 ValeurCmp = Encoder 1;
@@ -397,6 +404,20 @@ TimeStamp = /550F3CEC/550F44A5;
 Reference = P14;
 ValeurCmp = ICSP;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x06;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F3CBF/551D1127;
+Reference = P15;
+ValeurCmp = Gnd;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x05;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F3CEC/551D06D3;
+Reference = P16;
+ValeurCmp = UART;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
