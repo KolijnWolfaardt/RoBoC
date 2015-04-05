@@ -375,8 +375,6 @@ Text HLabel 7200 2200 2    60   Input ~ 0
 Data_7
 Text HLabel 7200 2300 2    60   Input ~ 0
 Data_6
-Text HLabel 7200 2400 2    60   Input ~ 0
-Data_5
 Text HLabel 7200 2500 2    60   Input ~ 0
 Data_4
 Text HLabel 7200 2600 2    60   Input ~ 0
@@ -749,4 +747,5 @@ Wire Wire Line
 	9500 4550 9400 4550
 Wire Wire Line
 	9400 4750 9500 4750
+NoConn ~ 7200 2400
 $EndSCHEMATC
