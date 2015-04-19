@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-03-23 BZR 5533)-product   date = Wed 15 Apr 2015 08:53:44 SAST
+Cmp-Mod V01 Created by Cvpcb (2015-04-05 BZR 5576)-product   date = Sun 19 Apr 2015 15:40:28 SAST
 
 BeginCmp
 TimeStamp = /550F3C71/55125943;
@@ -169,20 +169,6 @@ IdModule  = Capacitors_SMD:C_1206;
 EndCmp
 
 BeginCmp
-TimeStamp = /550F3C8C/552E1FD6;
-Reference = C25;
-ValeurCmp = 100nF;
-IdModule  = Capacitors_SMD:C_1206;
-EndCmp
-
-BeginCmp
-TimeStamp = /550F3C8C/552E2093;
-Reference = C26;
-ValeurCmp = 100nF;
-IdModule  = Capacitors_SMD:C_1206;
-EndCmp
-
-BeginCmp
 TimeStamp = /550F45E9/55102938;
 Reference = CON1;
 ValeurCmp = USB;
@@ -263,56 +249,56 @@ BeginCmp
 TimeStamp = /550F3C8C/55182139;
 Reference = D10;
 ValeurCmp = D;
-IdModule  = Diodes_SMD:SOD-323;
+IdModule  = RoBoC:SOD-323;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/55182145;
 Reference = D11;
 ValeurCmp = D;
-IdModule  = Diodes_SMD:SOD-323;
+IdModule  = RoBoC:SOD-323;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/551816B5;
 Reference = D12;
 ValeurCmp = D;
-IdModule  = Diodes_SMD:SOD-323;
+IdModule  = RoBoC:SOD-323;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/5518177A;
 Reference = D13;
 ValeurCmp = D;
-IdModule  = Diodes_SMD:SOD-323;
+IdModule  = RoBoC:SOD-323;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/5518213F;
 Reference = D14;
 ValeurCmp = D;
-IdModule  = Diodes_SMD:SOD-323;
+IdModule  = RoBoC:SOD-323;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/5518214B;
 Reference = D15;
 ValeurCmp = D;
-IdModule  = Diodes_SMD:SOD-323;
+IdModule  = RoBoC:SOD-323;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/55181742;
 Reference = D16;
 ValeurCmp = D;
-IdModule  = Diodes_SMD:SOD-323;
+IdModule  = RoBoC:SOD-323;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3C8C/551817DE;
 Reference = D17;
 ValeurCmp = D;
-IdModule  = Diodes_SMD:SOD-323;
+IdModule  = RoBoC:SOD-323;
 EndCmp
 
 BeginCmp
@@ -393,10 +379,10 @@ IdModule  = Pin_Headers:Pin_Header_Straight_1x08;
 EndCmp
 
 BeginCmp
-TimeStamp = /550F3CBF/55110EFC;
+TimeStamp = /550F3CBF/5533AE4A;
 Reference = P10;
-ValeurCmp = Camera;
-IdModule  = Pin_Headers:Pin_Header_Straight_2x11;
+ValeurCmp = CONN_02X12;
+IdModule  = Pin_Headers:Pin_Header_Straight_2x12;
 EndCmp
 
 BeginCmp

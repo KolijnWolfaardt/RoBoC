@@ -346,17 +346,6 @@ Text HLabel 5150 4000 0    60   Input ~ 0
 Text HLabel 5850 4000 2    60   Input ~ 0
 ~RRST
 $Comp
-L CONN_02X11 P10
-U 1 1 55110EFC
-P 5500 3500
-F 0 "P10" H 5500 4100 50  0000 C CNN
-F 1 "Camera" V 5500 3500 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_2x11" H 5500 2300 60  0001 C CNN
-F 3 "" H 5500 2300 60  0000 C CNN
-	1    5500 3500
-	1    0    0    -1  
-$EndComp
-$Comp
 L +3V3 #PWR032
 U 1 1 5511109F
 P 4950 3000
@@ -914,4 +903,17 @@ Connection ~ 7300 1400
 Wire Wire Line
 	7300 1600 7400 1600
 Connection ~ 7300 1500
+$Comp
+L CONN_02X12 P10
+U 1 1 5533AE4A
+P 5500 3550
+F 0 "P10" H 5500 4200 50  0000 C CNN
+F 1 "CONN_02X12" V 5500 3550 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x12" H 5500 2350 60  0001 C CNN
+F 3 "" H 5500 2350 60  0000 C CNN
+	1    5500 3550
+	1    0    0    -1  
+$EndComp
+NoConn ~ 5750 4100
+NoConn ~ 5250 4100
 $EndSCHEMATC
