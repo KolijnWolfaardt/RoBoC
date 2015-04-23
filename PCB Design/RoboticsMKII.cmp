@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-04-05 BZR 5576)-product   date = Sun 19 Apr 2015 15:40:28 SAST
+Cmp-Mod V01 Created by Cvpcb (2015-03-23 BZR 5533)-product   date = Thu 23 Apr 2015 13:34:57 SAST
 
 BeginCmp
 TimeStamp = /550F3C71/55125943;
@@ -164,6 +164,20 @@ EndCmp
 BeginCmp
 TimeStamp = /550F3C71/5522DB1C;
 Reference = C24;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_SMD:C_1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F3C8C/5538C861;
+Reference = C25;
+ValeurCmp = 100nF;
+IdModule  = Capacitors_SMD:C_1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F3C8C/5538C790;
+Reference = C26;
 ValeurCmp = 100nF;
 IdModule  = Capacitors_SMD:C_1206;
 EndCmp
@@ -564,21 +578,21 @@ BeginCmp
 TimeStamp = /550F3CEC/5510500A;
 Reference = RESET1;
 ValeurCmp = DPST;
-IdModule  = Buttons_Switches_SMD:SW_SPST_PTS645;
+IdModule  = RoBoC:SW_SPST_bigpads;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CBF/5510AA84;
 Reference = SW0;
 ValeurCmp = But 0;
-IdModule  = Buttons_Switches_SMD:SW_SPST_PTS645;
+IdModule  = RoBoC:SW_SPST_bigpads;
 EndCmp
 
 BeginCmp
 TimeStamp = /550F3CBF/5510B4BE;
 Reference = SW1;
 ValeurCmp = But 1;
-IdModule  = Buttons_Switches_SMD:SW_SPST_PTS645;
+IdModule  = RoBoC:SW_SPST_bigpads;
 EndCmp
 
 BeginCmp
@@ -592,7 +606,7 @@ BeginCmp
 TimeStamp = /550F3C8C/5511E05F;
 Reference = U2;
 ValeurCmp = LV8405V;
-IdModule  = Housings_SSOP:SSOP-16_4.4x5.2mm_Pitch0.65mm;
+IdModule  = RoBoC:SSOP-16_4.4x5.2mm_Pitch0.65mm_Handsoldering;
 EndCmp
 
 BeginCmp
@@ -606,7 +620,7 @@ BeginCmp
 TimeStamp = /550F3CEC/550F449E;
 Reference = U4;
 ValeurCmp = dsPIC33FJ32GS606;
-IdModule  = Housings_QFP:TQFP-64_10x10mm_Pitch0.5mm;
+IdModule  = RoBoC:TQFP-64_10x10mm_Pitch0.5mm_handsoldering;
 EndCmp
 
 BeginCmp

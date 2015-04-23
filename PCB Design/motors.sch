@@ -56,7 +56,7 @@ U 1 1 5511E05F
 P 5600 3700
 F 0 "U2" H 5600 3200 60  0000 C CNN
 F 1 "LV8405V" H 5600 4200 60  0000 C CNN
-F 2 "Housings_SSOP:SSOP-16_4.4x5.2mm_Pitch0.65mm" H 5800 3250 60  0001 C CNN
+F 2 "RoBoC:SSOP-16_4.4x5.2mm_Pitch0.65mm_Handsoldering" H 5800 3250 60  0001 C CNN
 F 3 "" H 5800 3250 60  0000 C CNN
 	1    5600 3700
 	1    0    0    -1  
@@ -578,7 +578,7 @@ Wire Wire Line
 Connection ~ 2800 5050
 Connection ~ 3100 4850
 Wire Wire Line
-	2700 4450 3100 4450
+	2700 4450 3400 4450
 Wire Wire Line
 	3100 4450 3100 4500
 Wire Wire Line
@@ -587,7 +587,7 @@ Connection ~ 2800 4450
 Wire Wire Line
 	2800 5400 2800 5450
 Wire Wire Line
-	2800 5450 3100 5450
+	2800 5450 3400 5450
 Wire Wire Line
 	2950 5450 2950 5500
 Wire Wire Line
@@ -604,7 +604,7 @@ Wire Wire Line
 Connection ~ 2750 3400
 Connection ~ 3050 3200
 Wire Wire Line
-	2650 2800 3050 2800
+	2650 2800 3350 2800
 Wire Wire Line
 	3050 2800 3050 2850
 Wire Wire Line
@@ -613,10 +613,44 @@ Connection ~ 2750 2800
 Wire Wire Line
 	2750 3750 2750 3800
 Wire Wire Line
-	2750 3800 3050 3800
+	2750 3800 3350 3800
 Wire Wire Line
 	2900 3800 2900 3850
 Wire Wire Line
 	3050 3800 3050 3750
 Connection ~ 2900 3800
+$Comp
+L C C26
+U 1 1 5538C790
+P 3400 4950
+F 0 "C26" H 3425 5050 50  0000 L CNN
+F 1 "100nF" H 3425 4850 50  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 3438 4800 30  0001 C CNN
+F 3 "" H 3400 4950 60  0000 C CNN
+	1    3400 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C25
+U 1 1 5538C861
+P 3350 3300
+F 0 "C25" H 3375 3400 50  0000 L CNN
+F 1 "100nF" H 3375 3200 50  0000 L CNN
+F 2 "Capacitors_SMD:C_1206" H 3388 3150 30  0001 C CNN
+F 3 "" H 3350 3300 60  0000 C CNN
+	1    3350 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3350 2800 3350 3150
+Connection ~ 3050 2800
+Wire Wire Line
+	3350 3800 3350 3450
+Connection ~ 3050 3800
+Wire Wire Line
+	3400 4450 3400 4800
+Connection ~ 3100 4450
+Wire Wire Line
+	3400 5450 3400 5100
+Connection ~ 3100 5450
 $EndSCHEMATC

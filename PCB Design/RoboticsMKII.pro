@@ -1,4 +1,4 @@
-update=Mon 13 Apr 2015 12:54:02 SAST
+update=Thu 23 Apr 2015 13:44:10 SAST
 version=1
 last_client=kicad
 [cvpcb]
@@ -46,26 +46,6 @@ LibName33=lib/l293
 LibName34=lib/mcp2200
 LibName35=lib/lv8405v
 LibName36=lib/33vReg
-[pcbnew]
-version=1
-PageLayoutDescrFile=
-LastNetListRead=
-UseCmpFile=1
-PadDrill=0.6
-PadDrillOvalY=0.6
-PadSizeH=1.5
-PadSizeV=1.5
-PcbTextSizeV=0.7
-PcbTextSizeH=0.7
-PcbTextThickness=0.3
-ModuleTextSizeV=0.7
-ModuleTextSizeH=0.7
-ModuleTextSizeThickness=0.09999999999999999
-SolderMaskClearance=0
-SolderMaskMinWidth=0
-DrawSegmentWidth=0.2
-BoardOutlineThickness=0.09999999999999999
-ModuleOutlineThickness=0.09999999999999999
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
@@ -79,3 +59,23 @@ RptD_X=0
 RptD_Y=100
 RptLab=1
 LabSize=60
+[pcbnew]
+version=1
+PageLayoutDescrFile=
+LastNetListRead=
+UseCmpFile=1
+PadDrill=3
+PadDrillOvalY=3
+PadSizeH=4
+PadSizeV=4
+PcbTextSizeV=0.7
+PcbTextSizeH=0.7
+PcbTextThickness=0.3
+ModuleTextSizeV=0.7
+ModuleTextSizeH=0.7
+ModuleTextSizeThickness=0.09999999999999999
+SolderMaskClearance=0
+SolderMaskMinWidth=0
+DrawSegmentWidth=0.2
+BoardOutlineThickness=0.09999999999999999
+ModuleOutlineThickness=0.09999999999999999
