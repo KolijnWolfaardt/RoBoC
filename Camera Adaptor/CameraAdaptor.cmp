@@ -1,0 +1,45 @@
+Cmp-Mod V01 Created by Cvpcb (2015-03-23 BZR 5533)-product   date = Fri 07 Aug 2015 12:23:12 SAST
+
+BeginCmp
+TimeStamp = /55C45D20;
+Reference = C1;
+ValeurCmp = 1uF;
+IdModule  = Capacitors_SMD:C_1206_HandSoldering;
+EndCmp
+
+BeginCmp
+TimeStamp = /5583E006;
+Reference = P1;
+ValeurCmp = CONN_02X12;
+IdModule  = Pin_Headers:Pin_Header_Straight_2x12;
+EndCmp
+
+BeginCmp
+TimeStamp = /5583E070;
+Reference = P2;
+ValeurCmp = CONN_02X09;
+IdModule  = Pin_Headers:Pin_Header_Straight_2x09;
+EndCmp
+
+BeginCmp
+TimeStamp = /55C45043;
+Reference = R1;
+ValeurCmp = 4.7k;
+IdModule  = Resistors_SMD:R_1206_HandSoldering;
+EndCmp
+
+BeginCmp
+TimeStamp = /55C450E0;
+Reference = R2;
+ValeurCmp = 4.7k;
+IdModule  = Resistors_SMD:R_1206_HandSoldering;
+EndCmp
+
+BeginCmp
+TimeStamp = /55C47029;
+Reference = U1;
+ValeurCmp = Oscillator;
+IdModule  = oscillator:oscillator;
+EndCmp
+
+EndListe
