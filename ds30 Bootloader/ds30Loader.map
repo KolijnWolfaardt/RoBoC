@@ -1,17 +1,20 @@
-Microchip Technology Inc, vv3_31 (A) Z
+Microchip Technology Inc, vv3_31 (A) 3
 
 Tool Name:
   C:\Program Files (x86)\Microchip\MPLAB ASM30 Suite\bin\bin/pic30-coff-ld.exe
 
 Command:
-  outputs\ds30loader.o \
-  -L./source \
-  -L./include \
+  output\ds30loader.o \
+  -LC:\Users\Kolijn\MPLAB\source \
+  -LC:\Users\Kolijn\MPLAB\include \
   --script=include\p33FJ32GS606.gld \
   --defsym=__MPLAB_BUILD=1 \
-  -Map=./outputs\ds30 Bootloader.map \
+  --defsym=__MPLAB_DEBUG=1 \
+  --defsym=__MPLAB_DEBUGGER_PK3=1 \
+  --defsym=__ICD2RAM=1 \
+  -Map=ds30Loader.map \
   --report-mem \
-  -o./outputs\ds30 Bootloader.cof \
+  -ods30Loader.cof \
 
 
 Optional library libp33FJ32GS606.a not found
@@ -22,9 +25,9 @@ Program Memory  [Origin = 0x200, Length = 0x55fe]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                 0x4             0x6  (6)
-source\ds30loader.s.scn1    0x55fc                 0x4             0x6  (6)
-source\ds30loader.s.scn2    0x5600               0x178           0x234  (564)
-.dinit                      0x5778                 0x8             0xc  (12)
+source\ds30loader.s.scn1    0x53fc                 0x4             0x6  (6)
+source\ds30loader.s.scn2    0x5400               0x178           0x234  (564)
+.dinit                      0x5578                 0x8             0xc  (12)
 
                      Total program memory used (bytes):          0x24c  (588) 1%
 
@@ -33,9 +36,10 @@ Data Memory  [Origin = 0x800, Length = 0x1000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.bss                         0x800                   0            0xd0  (208)
+.icd                         0x800                0x50            0x50  (80)
+.bss                         0x850                   0            0xd0  (208)
 
-                        Total data memory used (bytes):           0xd0  (208) 5%
+                        Total data memory used (bytes):          0x120  (288) 7%
 
 
 Dynamic Memory Usage
@@ -43,28 +47,28 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x8d0                               0xf30  (3888)
+stack                        0x920                               0xee0  (3808)
 
-                        Maximum dynamic memory (bytes):          0xf30  (3888)
+                        Maximum dynamic memory (bytes):          0xee0  (3808)
 
 
 External Symbols in Data Memory (by address):
 
-                    0x0800                  _buffer
+                    0x0850                  _buffer
 
 External Symbols in Data Memory (by name):
 
-                    0x0800                  _buffer
+                    0x0850                  _buffer
 
 External Symbols in Program Memory (by address):
 
                   0x000200                  __DefaultInterrupt
-                  0x005600                  __reset
+                  0x005400                  __reset
 
 External Symbols in Program Memory (by name):
 
                   0x000200                  __DefaultInterrupt
-                  0x005600                  __reset
+                  0x005400                  __reset
 
 Memory Configuration
 
@@ -87,7 +91,7 @@ FCMP             0xf80010           0x000002
 
 Linker script and memory map
 
-LOAD outputs\ds30loader.o
+LOAD output\ds30loader.o
 LOAD p33FJ32GS606
                     0xf80000                  __FBS = 0xf80000
                     0xf80004                  __FGS = 0xf80004
@@ -107,7 +111,7 @@ LOAD p33FJ32GS606
                     0x5600                  __CODE_LENGTH = 0x5600
 
 .reset            0x000000          0x4
-                  0x000000          0x2 SHORT 0x5600 ABSOLUTE (__reset)
+                  0x000000          0x2 SHORT 0x5400 ABSOLUTE (__reset)
                   0x000001          0x2 SHORT 0x4
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
@@ -135,26 +139,30 @@ __FGS
 
 __FOSCSEL         0xf80006          0x2
  *(__FOSCSEL.sec*)
- __FOSCSEL.sec    0xf80006          0x2 outputs\ds30loader.o
+ __FOSCSEL.sec    0xf80006          0x2 output\ds30loader.o
 
 __FOSC            0xf80008          0x2
  *(__FOSC.sec*)
- __FOSC.sec       0xf80008          0x2 outputs\ds30loader.o
+ __FOSC.sec       0xf80008          0x2 output\ds30loader.o
 
 __FWDT            0xf8000a          0x2
  *(__FWDT.sec*)
- __FWDT.sec       0xf8000a          0x2 outputs\ds30loader.o
+ __FWDT.sec       0xf8000a          0x2 output\ds30loader.o
 
 __FPOR            0xf8000c          0x2
  *(__FPOR.sec*)
- __FPOR.sec       0xf8000c          0x2 outputs\ds30loader.o
+ __FPOR.sec       0xf8000c          0x2 output\ds30loader.o
 
 __FICD            0xf8000e          0x2
  *(__FICD.sec*)
- __FICD.sec       0xf8000e          0x2 outputs\ds30loader.o
+ __FICD.sec       0xf8000e          0x2 output\ds30loader.o
 
 __FCMP
  *(__FCMP.sec*)
+
+.icd                0x0800         0x50
+                    0x0850                  . = (. + DEFINED (__ICD2RAM)?0x50:0x0)
+ *fill*             0x0800         0x5000
 
 .comment
  *(.comment)
@@ -1378,24 +1386,27 @@ __FCMP
                     0x0230                  UART2 = 0x230
                     0x0230                  _UART2 = 0x230
                     0x0001                  __MPLAB_BUILD = 0x1
-OUTPUT(./outputs\ds30 Bootloader.cof coff-pic30)
+                    0x0001                  __MPLAB_DEBUG = 0x1
+                    0x0001                  __MPLAB_DEBUGGER_PK3 = 0x1
+                    0x0001                  __ICD2RAM = 0x1
+OUTPUT(ds30Loader.cof coff-pic30)
 LOAD data_init
 LOAD default_isr
 
-.bss                0x0800         0xd0
- .bss               0x0800         0xd0 outputs\ds30loader.o
-                    0x0800                  buffer
+.bss                0x0850         0xd0
+ .bss               0x0850         0xd0 output\ds30loader.o
+                    0x0850                  buffer
 
 source\ds30loader.s.scn2
-                  0x005600        0x178
+                  0x005400        0x178
  source\ds30loader.s.scn2
-                  0x005600        0x178 outputs\ds30loader.o
-                  0x005600                  _reset
+                  0x005400        0x178 output\ds30loader.o
+                  0x005400                  _reset
 
 source\ds30loader.s.scn1
-                  0x0055fc          0x4
+                  0x0053fc          0x4
  source\ds30loader.s.scn1
-                  0x0055fc          0x4 outputs\ds30loader.o
+                  0x0053fc          0x4 output\ds30loader.o
 
-.dinit            0x005778          0x8
- .dinit           0x005778          0x8 data_init
+.dinit            0x005578          0x8
+ .dinit           0x005578          0x8 data_init

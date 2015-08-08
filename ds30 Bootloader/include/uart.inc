@@ -117,106 +117,107 @@
 ;------------------------------------------------------------------------------
 ; CommInit()
 ;------------------------------------------------------------------------------		
-;CommInit:		
-;		.ifdef USE_BRGH	
-;			bset	UMODE, #BRGH
-;		.endif		
-;		.ifdef 	USE_ALTIO
-;			bset	U1MODE, #ALTIO
-;		.endif		
+CommInit:		
+		.ifdef USE_BRGH	
+			bset	UMODE, #BRGH
+		.endif		
+		.ifdef 	USE_ALTIO
+			bset	U1MODE, #ALTIO
+		.endif	
+		bclr UMODE, #BRGH	
 		
 		;----------------------------------------------------------------------
 		;UART without auto baudrate detection
 		;----------------------------------------------------------------------
-;		.ifndef USE_ABAUD
-;			mov		#UARTBR, W0 		;set	
-;			mov 	W0, UBRG			; baudrate
-;			bset 	UMODE, #UARTEN		;enable uart
-;			bset 	USTA, #UTXEN		;enable transmit
+		.ifndef USE_ABAUD
+			mov		#UARTBR, W0 		;set	
+			mov 	W0, UBRG			; baudrate
+			bset 	UMODE, #UARTEN		;enable uart
+			bset 	USTA, #UTXEN		;enable transmit
 			
 			
 		;----------------------------------------------------------------------
 		;UART with auto baudrate detection
 		;----------------------------------------------------------------------
-;		.else
-;			; PIC24F, PIC24FJ, PIC24H & dsPIC330FJ
-;			.ifndef IS_30F
-;				setm	UBRG			;errata workaround
-;				bset	UMODE, #ABAUD	;enable auto baudrate
-;				bset 	UMODE, #UARTEN	;enable uart			
-;				
-;				;------------------------------------------------------------------
-;				; Wait for auto baudrate to complete	
-;				;------------------------------------------------------------------
-;				; Init delay
-;				mov 	#BLSTART, WDEL1
-;				; Check for auto baud complete
-;arpt1:			clr		WDEL2
-;arptc:			clrwdt
-;				btss 	UMODE, #ABAUD
-;				bra		abaudok
-;		 		; Delay
-;anotrcv:		dec 	WDEL2, WDEL2
-;				bra 	nz, arptc
-;				dec 	WDEL1, WDEL1
-;				bra 	nz, arpt1
-;				; If we get here, abaud timed out	
-;				bra		exit	
-;				; Auto baud rate detection completed
-;abaudok:		bset 	USTA, #UTXEN		;enable transmit			
-;				SendL	OK					;confirm baudrate detection to application
-;			
-;			; dsPIC30F
-;			.else
-;				bset 	UMODE, #UARTEN		;enable UART
-;				bset 	U1MODE, #ABAUD      ;enable auto baudrate detection			
-;				; Setp timer 3 
-;		        clr 	T3CON             	;
-;		        bclr 	IEC0, #T3IE         ;disable timer 3 interrupt
-;		        setm 	PR3                 ;maximum period time
-;		        mov 	#0x8000, W0         ;start, 1:1 prescaler, internal cycle as clock source
-;		        mov 	W0, T3CON	
-;		        ; Setp input capture
-;				mov		#3, W0  	        ;capture mode, every rising edge
-;		        mov 	W0, IC1CON        	;
-;		        bclr 	IFS0, #IC1IF        ;clear input capture interrupt flag	
-;		        ; Begin autobaud detection
-;				mov 	#0x0004, W0			;detected 4 edges after first 4 edge, total 5 for 0x55
-;		        rcall 	WaitIC          	;wait for first rising edge
-;		        clr 	TMR3                ;reset timer 3
-;edgeloop:   	rcall 	WaitIC
-;		        dec 	W0, W0 
-;		        bra 	nz, edgeloop
-;		        ; Do calculation
-;		        mov 	TMR3, W0
-;		        add 	#0x40, W0           ;add 0.5(64/128) => rounding
-;		        asr 	W0, #7, W0          ;W0 = (Tend - Tstart/ 128) + 0.5
-;		        dec 	W0, W0			
-;				; Detection comleted, clean up
-;				bclr 	T3CON, #TON         ;disable timer 3
-;		        bclr 	IFS0, #IC1IF        ;clear input capture interrupt flag	        
-;		        ; Init uart
-;		        mov 	W0, U1BRG			;use calculated brg
-;		        bclr 	UMODE, #ABAUD      	;disable auto baudrate detection
-;		        bclr 	UMODE, #UARTEN		;disable uart
-;		        clr		USTA				;clear uart status
-;		        bset 	UMODE, #UARTEN		;enable uart
-;		        bset 	USTA, #UTXEN       	;enable tx			
-;				;confirm baudrate detection to application
-;				SendL	OK					
-;			.endif						
-;		.endif
-;		
-;		
-;		;----------------------------------------------------------------------
-;		; TX enable, make tx enable pin output and set to 0
-;		;----------------------------------------------------------------------
-;		.ifdef USE_TXENABLE
-;			bclr	TRISR_TXE, #TRISB_TXE
-;			bclr	LATR_TXE, #LATB_TXE
-;		.endif
-;		
-;		return
+		.else
+			; PIC24F, PIC24FJ, PIC24H & dsPIC330FJ
+			.ifndef IS_30F
+				setm	UBRG			;errata workaround
+				bset	UMODE, #ABAUD	;enable auto baudrate
+				bset 	UMODE, #UARTEN	;enable uart			
+				
+				;------------------------------------------------------------------
+				; Wait for auto baudrate to complete	
+				;------------------------------------------------------------------
+				; Init delay
+				mov 	#BLSTART, WDEL1
+				; Check for auto baud complete
+arpt1:			clr		WDEL2
+arptc:			clrwdt
+				btss 	UMODE, #ABAUD
+				bra		abaudok
+		 		; Delay
+anotrcv:		dec 	WDEL2, WDEL2
+				bra 	nz, arptc
+				dec 	WDEL1, WDEL1
+				bra 	nz, arpt1
+				; If we get here, abaud timed out	
+				bra		exit	
+				; Auto baud rate detection completed
+abaudok:		bset 	USTA, #UTXEN		;enable transmit			
+				SendL	OK					;confirm baudrate detection to application
+			
+			; dsPIC30F
+			.else
+				bset 	UMODE, #UARTEN		;enable UART
+				bset 	U1MODE, #ABAUD      ;enable auto baudrate detection			
+				; Setp timer 3 
+		        clr 	T3CON             	;
+		        bclr 	IEC0, #T3IE         ;disable timer 3 interrupt
+		        setm 	PR3                 ;maximum period time
+		        mov 	#0x8000, W0         ;start, 1:1 prescaler, internal cycle as clock source
+		        mov 	W0, T3CON	
+		        ; Setp input capture
+				mov		#3, W0  	        ;capture mode, every rising edge
+		        mov 	W0, IC1CON        	;
+		        bclr 	IFS0, #IC1IF        ;clear input capture interrupt flag	
+		        ; Begin autobaud detection
+				mov 	#0x0004, W0			;detected 4 edges after first 4 edge, total 5 for 0x55
+		        rcall 	WaitIC          	;wait for first rising edge
+		        clr 	TMR3                ;reset timer 3
+edgeloop:   	rcall 	WaitIC
+		        dec 	W0, W0 
+		        bra 	nz, edgeloop
+		        ; Do calculation
+		        mov 	TMR3, W0
+		        add 	#0x40, W0           ;add 0.5(64/128) => rounding
+		        asr 	W0, #7, W0          ;W0 = (Tend - Tstart/ 128) + 0.5
+		        dec 	W0, W0			
+				; Detection comleted, clean up
+				bclr 	T3CON, #TON         ;disable timer 3
+		        bclr 	IFS0, #IC1IF        ;clear input capture interrupt flag	        
+		        ; Init uart
+		        mov 	W0, U1BRG			;use calculated brg
+		        bclr 	UMODE, #ABAUD      	;disable auto baudrate detection
+		        bclr 	UMODE, #UARTEN		;disable uart
+		        clr		USTA				;clear uart status
+		        bset 	UMODE, #UARTEN		;enable uart
+		        bset 	USTA, #UTXEN       	;enable tx			
+				;confirm baudrate detection to application
+				SendL	OK					
+			.endif						
+		.endif
+		
+		
+		;----------------------------------------------------------------------
+		; TX enable, make tx enable pin output and set to 0
+		;----------------------------------------------------------------------
+		.ifdef USE_TXENABLE
+			bclr	TRISR_TXE, #TRISB_TXE
+			bclr	LATR_TXE, #LATB_TXE
+		.endif
+		
+		return
 		
 				
 ;------------------------------------------------------------------------------
@@ -289,25 +290,25 @@ txwait:		btss	USTA, #TRMT
 ;------------------------------------------------------------------------------
 ; WaitIC()
 ;------------------------------------------------------------------------------
-;.ifdef IS_30F
-;.ifdef USE_ABAUD
-;WaitIC: mov 	#BLDELAY, WDEL1
-;wicol: 	clr 	WDEL2
-;wicil: 	clrwdt					;clear watchdog
-;		btsc 	IFS0, #IC1IF	;rising edge detected?
-;        bra 	EdgeDet
-;        dec 	WDEL2, WDEL2
-;        nop						;nop so we can use same delay as comm.
-;        nop
-;        bra 	nz, wicil
-;        dec 	WDEL1, WDEL1
-;        bra 	nz, wicol
-;        ; Timeou
-;        goto 	usrapp		        
-;EdgeDet:bclr 	IFS0, #IC1IF    ;clear input capture interrupt flag
-;        return
-;.endif
-;.endif
+.ifdef IS_30F
+.ifdef USE_ABAUD
+WaitIC: mov 	#BLDELAY, WDEL1
+wicol: 	clr 	WDEL2
+wicil: 	clrwdt					;clear watchdog
+		btsc 	IFS0, #IC1IF	;rising edge detected?
+        bra 	EdgeDet
+        dec 	WDEL2, WDEL2
+        nop						;nop so we can use same delay as comm.
+        nop
+        bra 	nz, wicil
+        dec 	WDEL1, WDEL1
+        bra 	nz, wicol
+        ; Timeou
+        goto 	usrapp		        
+EdgeDet:bclr 	IFS0, #IC1IF    ;clear input capture interrupt flag
+        return
+.endif
+.endif
 			
 
 ;------------------------------------------------------------------------------

@@ -31,7 +31,31 @@
 ; Description: this is executed immediately on start-up before the boot loader code
 ;------------------------------------------------------------------------------
  		.macro UserInit
-			
+			;----------------------------------------------------------------------
+			; Set up the clock
+			;----------------------------------------------------------------------
+			; CLKDIVbits.PLLPRE=0;        // PLLPRE (N2) 0=/2
+			MOV 	CLKDIV, W5
+			MOV 	#0xFFE0, W4
+			AND 	W5, W4, W4
+			MOV 	W4, CLKDIV
+			; PLLFBD=20;                  // pll multiplier (M) = +2
+			MOV 	#0x14, W4
+			MOV	 	W4, PLLFBD
+			; CLKDIVbits.PLLPOST=0;       // PLLPOST (N1) 0=/2
+			MOV 	CLKDIV, W4
+			BCLR 	W4, #6
+			BCLR 	W4, #7
+			mov 	W4, CLKDIV
+			;while(!OSCCONbits.LOCK);    // wait for PLL ready
+pllWhile: 	NOP
+			MOV 	OSCCON, W5
+			MOV 	#0x20, W4
+			AND 	W5, W4, W4
+			SUB 	W4, #0x0, [W15]
+			BRA 	Z, pllWhile
+	
+
 			;----------------------------------------------------------------------
 			; Make uart pins digital
 			;----------------------------------------------------------------------
@@ -83,7 +107,7 @@
 ; Description: this is executed right before the user application is loadaed
 ;------------------------------------------------------------------------------
  		.macro UserExit
- 			bclr		PORTB, #13
+ 		
 		
 		; End of macro
 		.endm

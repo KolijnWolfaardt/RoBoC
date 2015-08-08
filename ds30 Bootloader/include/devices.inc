@@ -12,11 +12,11 @@
 ;------------------------------------------------------------------------------
 ; Includes
 ;------------------------------------------------------------------------------
-        .include	"devices_PIC24F.inc"
-        .include	"devices_PIC24FJ.inc"
-        .include	"devices_PIC24HJ.inc"
-        .include	"devices_dsPIC30F.inc"
-        .include	"devices_dsPIC33FJ.inc"
+.include	"devices_PIC24F.inc"
+.include	"devices_PIC24FJ.inc"
+.include	"devices_PIC24HJ.inc"
+.include	"devices_dsPIC30F.inc"
+.include	"devices_dsPIC33FJ.inc"
         
         
 ;------------------------------------------------------------------------------

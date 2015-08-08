@@ -66,10 +66,10 @@
 		;.equiv	USE_TXENABLE,		1			;xxx uncomment to use a tx enable pin		
 		.ifdef USE_TXENABLE
 			.equ    TXE_DELAY, 		10			;xxx time in us to wait before transmitting after pulling the tx enable pin high
-			.equiv	TRISR_TXE,		TRISA		;xxx tris register containing tx enable
-			.equiv 	LATR_TXE,		LATA		;xxx port register containing tx enable
-			.equiv	TRISB_TXE,		TRISA1		;xxx tris bit for tx enable
-			.equiv	LATB_TXE,		RA1			;xxx port bit for tx enable
+			.equiv	TRISR_TXE,		TRISF		;xxx tris register containing tx enable
+			.equiv 	LATR_TXE,		LATF		;xxx port register containing tx enable
+			.equiv	TRISB_TXE,		TRISF3		;xxx tris bit for tx enable
+			.equiv	LATB_TXE,		RF3			;xxx port bit for tx enable
 		.endif
 		
 		
@@ -79,8 +79,8 @@
 		;.equiv	KICK_WD,			1			;xxx uncomment to kick the wd in the rx loop, ONLY enable if watchdog is enabled
 		.equiv	WRITE_VER,			1			;xxx do flash write verification
 		.equiv	EWRITE_VER,			1			;xxx do eeprom write verification
-		.equiv	PROT_GOTO,			0			;protect goto at 0x00
-		.equiv	PROT_BL,			0			;protect bootloader
+		.equiv	PROT_GOTO,			1			;protect goto at 0x00
+		.equiv	PROT_BL,			1			;protect bootloader
 				
 		.ifdef	IS_24F
 			.equiv	BLPLP,			7			;bootloader placement, pages from end
@@ -154,10 +154,10 @@
 			;config 	__FBS, 		RBS_NO_RAM & BSS_NO_FLASH & BWRP_WRPROTECT_OFF	;xxx boot segment
 			;config 	__FSS, 		RSS_NO_RAM & SSS_NO_FLASH & SWRP_WRPROTECT_OFF	;xxx secure segment
 			;config	__FGS,		GSS_OFF & GCP_OFF & GWRP_OFF						;xxx general segment
-			config 	__FOSCSEL, 	FNOSC_PRIPLL & IESO_OFF 							;xxx oscillator mode
-			config 	__FOSC, 	FCKSM_CSECMD & OSCIOFNC_OFF & POSCMD_HS				;xxx clock switching/clock monitor, osc2 & oscillator selection
+			config 	__FOSCSEL, 	FNOSC_PRIPLL & IESO_ON 								;xxx oscillator mode
+			config 	__FOSC, 	FCKSM_CSECMD & OSCIOFNC_ON & POSCMD_HS				;xxx clock switching/clock monitor, osc2 & oscillator selection
 			config	__FWDT,		WDTPOST_PS256 & WDTPRE_PR128 & FWDTEN_OFF & WINDIS_OFF		;xxx watchdog
-			config	__FPOR,		FPWRT_PWR32											;xxx pwm, power-on reset
+			config	__FPOR,		FPWRT_PWR1											;xxx pwm, power-on reset
 			config	__FICD,		JTAGEN_OFF & ICS_PGD2								;xxx 
 		.endif
 

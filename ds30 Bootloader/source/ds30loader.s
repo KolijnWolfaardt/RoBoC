@@ -38,61 +38,61 @@
 ;------------------------------------------------------------------------------
 ; Register usage
 ;------------------------------------------------------------------------------
-		;.equiv	MIXED,		W0		;immediate
-		;.equiv	MIXED,		W1		;immediate
-		.equiv	WBUFPTR,	W2		;buffer pointer
-		.equiv	WCNT,		W3		;loop counter
-		.equiv	WADDR2,		W4		;memory pointer
-		.equiv	WADDR,		W5		;memory pointer
-		.equiv	WPPSTEMP1,	W6		;used to restore pps register
-		.equiv	WPPSTEMP2,	W7		;used to restore pps register
-		.equiv	WTEMP1,		W8		;
-		.equiv	WTEMP2,		W9		;
-		.equiv	WDEL1,		W10		;delay outer
-		.equiv	WDEL2,		W11		;delay inner
-		.equiv	WDOERASE,	W12		;flag indicated erase should be done before next write
-		.equiv	WCMD,		W13		;command
-		.equiv 	WCRC, 		W14		;checksum
-		.equiv	WSTPTR,		W15		;stack pointer
+	;.equiv	MIXED,		W0		;immediate
+	;.equiv	MIXED,		W1		;immediate
+	.equiv	WBUFPTR,	W2		;buffer pointer
+	.equiv	WCNT,		W3		;loop counter
+	.equiv	WADDR2,		W4		;memory pointer
+	.equiv	WADDR,		W5		;memory pointer
+	.equiv	WPPSTEMP1,	W6		;used to restore pps register
+	.equiv	WPPSTEMP2,	W7		;used to restore pps register
+	.equiv	WTEMP1,		W8		;
+	.equiv	WTEMP2,		W9		;
+	.equiv	WDEL1,		W10		;delay outer
+	.equiv	WDEL2,		W11		;delay inner
+	.equiv	WDOERASE,	W12		;flag indicated erase should be done before next write
+	.equiv	WCMD,		W13		;command
+	.equiv 	WCRC, 		W14		;checksum
+	.equiv	WSTPTR,		W15		;stack pointer
+
 
 
 ;------------------------------------------------------------------------------
 ; Includes
 ;------------------------------------------------------------------------------
-		.include "settings.inc"	
-		.include "user_code.inc"
+	.include "settings.inc"	
+	.include "user_code.inc"
 
 
 ;------------------------------------------------------------------------------
 ; Defines
 ;------------------------------------------------------------------------------			
-		.equiv	VERMAJ,			4						/*firmware version major*/
-		.equiv	VERMIN,			0						/*fimrware version minor*/
-		.equiv	VERREV,			3						/*firmware version revision*/
+	.equiv	VERMAJ,			4						/*firmware version major*/
+	.equiv	VERMIN,			0						/*fimrware version minor*/
+	.equiv	VERREV,			3						/*firmware version revision*/
 
-		.equiv 	HELLO, 			0xC1		
-		.equiv 	OK, 			'K'						/*erase/write ok*/
-		.equiv 	CHECKSUMERR,	'N'						/*checksum error*/
-		.equiv	VERFAIL,		'V'						/*verification failed*/
-		.equiv  BLPROT,     	'P'                     /*bl protection tripped*/		
-		.equiv  UCMD,     		'U'                     /*unknown command*/		
-		
-		.equiv	PWOK,			0xFE	
+	.equiv 	HELLO, 			0xC1		
+	.equiv 	OK, 			'K'						/*erase/write ok*/
+	.equiv 	CHECKSUMERR,	'N'						/*checksum error*/
+	.equiv	VERFAIL,		'V'						/*verification failed*/
+	.equiv  BLPROT,     	'P'                     /*bl protection tripped*/		
+	.equiv  UCMD,     		'U'                     /*unknown command*/		
 
-		.equiv	BLSTART,		( BLINIT * (FCY / 1000) / (65536 * 7) )				/*count for boot receive delay*/
-		.equiv	BLDELAY,		( BLTIME * (FCY / 1000) / (65536 * 7) )				/*count for receive delay*/
-			
-		;.equiv	STARTADDR,		( FLASHSIZE - BLPLP * PAGESIZER * ROWSIZEW * 2 )	/*bootloader placement*/		
-		.equiv	STARTADDR,		( FLASHSIZE - BLPLP * PAGESIZER * ROWSIZEW )	/*bootloader placement*/
-		.equiv	BLSTARTROW,		(STARTADDR / ROWSIZEW / 2)	
-		.equiv	BLENDROW,		(STARTADDR / ROWSIZEW / 2 + (BLSIZEP*PAGESIZER) - 1)			
+	.equiv	PWOK,			0xFE	
+
+	.equiv	BLSTART,		( BLINIT * (FCY / 1000) / (65536 * 7) )				/*count for boot receive delay*/
+	.equiv	BLDELAY,		( BLTIME * (FCY / 1000) / (65536 * 7) )				/*count for receive delay*/
+
+	.equiv	STARTADDR,		( FLASHSIZE - BLPLP * PAGESIZER * ROWSIZEW * 2 )	/*bootloader placement*/		
+	.equiv	BLSTARTROW,		(STARTADDR / ROWSIZEW / 2)	
+	.equiv	BLENDROW,		(STARTADDR / ROWSIZEW / 2 + (BLSIZEP*PAGESIZER) - 1)			
 
 
 ;------------------------------------------------------------------------------
 ; Variables
 ;------------------------------------------------------------------------------
-		.equiv	BUFFERSIZE,		(ROWSIZEW*3 + 8/*MAC*/ + 1/*checksum*/)
-		.bss	_buffer, BUFFERSIZE, 8		
+	.equiv	BUFFERSIZE,		(ROWSIZEW*3 + 8/*MAC*/ + 1/*checksum*/)
+	.bss	_buffer, BUFFERSIZE, 8	
 		
 
 ;------------------------------------------------------------------------------
@@ -104,10 +104,10 @@
 ;------------------------------------------------------------------------------
 ; Send macro
 ;------------------------------------------------------------------------------
-		.macro SendL char
-			mov		#\char, W0
-			rcall 	Send
-		.endm
+	.macro SendL char
+		mov		#\char, W0
+		rcall 	Send
+	.endm
 		
 
 ;------------------------------------------------------------------------------
@@ -128,69 +128,45 @@ usrapp:	nopr						;these two instructions will be replaced
 ; Start of bootloader code
 ;------------------------------------------------------------------------------
 		.section *, code, address(STARTADDR)
-	
-__reset:mov		#__SP_init, WSTPTR	;initalize the Stack Pointer
-			; Setup the PLL
-			mov		#20, w0
-			mov 	w0, PLLFBD
-			mov 	#0x0000,w3
-			;Get the bit 5 of osccon, wait until it is 1
-oscGetPllBit:		
-			mov		CLKDIV, w0
-			mov		#0xFF00, w1
-			and		w0,w1,w1
-			mov		w1, CLKDIV
-			mov 	OSCCON,w0
-			btss	w0,#5
-			bra		oscGetPllBit
-			;Start initialization
-			clr		WDOERASE 
+__reset:mov		#__SP_init, WSTPTR	;initalize the Stack Pointer	
 
+      			
 ;------------------------------------------------------------------------------
-; Initialize the UART, this replaces CommInit
+; Init 
 ;------------------------------------------------------------------------------
-CommInit:	mov		#0x0800,w0
-			mov		w0,	U1MODE
-			mov		#0x0400, w0
-			mov		w0, U1STA
-			mov		#28, w0
-			mov		w0, U1BRG
+		UserInit					;macro in user_code.inc
+		clr		WDOERASE     			
+		rcall	CommInit
 
-			bset	U1MODE, #UARTEN
-			bset	U1STA, #UTXEN
+		bset	TRISB, #13
+		bset	TRISB, #14
+		bset 	PORTB, #13
 
-			
-;------------------------------------------------------------------------------
-; Initialize the GPIO
-;------------------------------------------------------------------------------
-			bclr	TRISB, #14
-			bclr	TRISB, #13
-			bset	PORTB, #13
-			mov		#0xffff, w0
-			mov		w0,ADPCFG
-			bset	PORTB, #13
-
-			clr		WDOERASE 
-
+		bra		z, rhellofinished
+		
 		
 ;------------------------------------------------------------------------------
 ; Receive hello
 ;------------------------------------------------------------------------------
-			mov		#HELLOTRIES, WCNT
-rhello:		mov		#BLSTART, WDEL1
-			rcall 	ReceiveInit
-			
-			sub 	#HELLO, W0
-			bra		z, rhellofinished		
-			; Not hello received
-			dec		WCNT, WCNT
-			bra		z, exit
-			bra		rhello		
+		mov		#HELLOTRIES, WCNT
+rhello:	mov		#BLSTART, WDEL1
+		rcall 	ReceiveInit
+		sub 	#HELLO, W0
+		bra		z, rhellofinished		
+		; Not hello received
+		dec		WCNT, WCNT
+		bra		z, exit
+		bra		rhello		
 rhellofinished:
 
-			SendL 	( DEVICEID & 0xff )
-			SendL	( ((DEVICEID&0x100)>>1) + VERMAJ )
-			SendL	( ((DEVICEID&0x200)>>2) + (VERMIN<<4) + VERREV )
+
+;------------------------------------------------------------------------------
+; Send device id and firmware version
+;------------------------------------------------------------------------------
+		SendL 	( DEVICEID & 0xff )
+		SendL	( ((DEVICEID&0x100)>>1) + VERMAJ )
+		SendL	( ((DEVICEID&0x200)>>2) + (VERMIN<<4) + VERREV )
+		
 
 ;------------------------------------------------------------------------------
 ; Main
@@ -498,7 +474,7 @@ compl:	btsc	NVMCON, #WR
 ; User specific exit code go here
 ;------------------------------------------------------------------------------
 exit:
-		bclr	PORTB, #13	;Turn the LED off
+		  
 		
 ;------------------------------------------------------------------------------
 ; Exit point, clean up and load user application
@@ -509,16 +485,19 @@ exit:
 		
 		UserExit
 
+
 ;------------------------------------------------------------------------------
 ; Load user application
 ;------------------------------------------------------------------------------
         bra 	usrapp
 
+
 ;------------------------------------------------------------------------------
 ; Functions
 ;------------------------------------------------------------------------------
 		.include "uart.inc"	
-	
+		
+		
 ;------------------------------------------------------------------------------
 ; Validate user settings
 ;------------------------------------------------------------------------------
