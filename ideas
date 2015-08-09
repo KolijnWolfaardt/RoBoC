@@ -1,0 +1,42 @@
+Notes:
+
+INroduction
+	This tutorial assumes you are familliar with programming, and a little bit with microcontrollers.
+
+1 The board
+	Cover what the board is
+	What features does the board have
+	Why was it designed, why not other boards
+
+	Possible options of the board, jumpers, important circuits
+	USB interface options, power settings
+
+2 Programming the board
+	Start by opening MPLABX, go through program details, including code
+	Show an example of the bootloader program here.	
+	Intorduce the skeleton code
+
+3	Advance coding with the dsPIC33F
+	Peripherals,
+
+4	Motors and Servos
+
+	
+5	The camera interface
+	Explain the idea behind the camera interface, what worked, what didn't?
+	Explain the software, as soon as it works
+
+
+A Bootloader details
+	What does ds30 do?
+	What did we customize?
+	Limitations
+	Linux version?
+
+	How does the bootlaoder work? Show a memory diagram/ or a program flow here.
+
+B 	Modifying the board
+		Kicad project details
+		Manufacturing
+
+C 	Any possible measurements, power consumption, motor power.

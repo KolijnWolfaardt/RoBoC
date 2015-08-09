@@ -1,0 +1,132 @@
+html
+{
+	min-height:100%;
+	font-family:sans-serif;
+}
+
+body
+{
+	background-image:url("images/dark_embroidery.png");
+	padding:0;
+	margin:0;
+	min-height:100%;
+}
+
+@media (max-width: 1000px)
+{
+	.content
+	{
+		width:100%;
+		padding:40px 0px;
+	}
+	.contentBuffer{
+		margin-left:20px;
+		width:95%;
+	}
+
+	.columnText{
+		width:90%
+	}
+}
+
+@media (min-width: 1000px)
+{
+	.content
+	{
+		width:900px;
+		padding:40px 50px;
+	}
+
+	.contentBuffer{
+		margin-left:100px;
+		width:100%;
+	}
+
+	.columnText{
+		width:65%;
+	}
+}
+.content
+{
+	margin:30px auto;
+	background-color:#e0e0d7;
+	color:#252020;
+	
+	/*min-height:100%;*/
+	height:auto;
+	-webkit-box-shadow: 1px 0px 15px 7px rgba(0,0,0,0.75);
+	-moz-box-shadow: 1px 0px 15px 7px rgba(0,0,0,0.75);
+	box-shadow: 1px 0px 15px 7px rgba(0,0,0,0.75);
+}
+
+.contentBuffer
+{
+	
+	height:auto;
+}
+
+.columnText
+{
+	font-size:14px;
+	margin-left:2em;
+	
+    line-height: 170%;
+    text-align: justify;
+}
+
+
+
+.image
+{
+	margin:20px 20px;
+	padding:20px 0;
+	width:auto;
+	font-style: italic;
+	text-align: center;
+}
+
+.image img
+{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a:hover,
+a:active
+{
+	text-decoration: underline;
+	color:#E74C3C;
+}
+
+a
+{
+	text-decoration: none;
+	color:#3498DB;
+}
+
+a:visited
+{
+	text-decoration: none;
+	color:#236575;
+}
+
+h1
+{
+	height:1.5em;
+	width:100%;
+	margin:4em 0px 0.7em 0px;
+	font-size:24px;
+	font-family:Helvetica;
+	color:#F64;
+}
+
+h2
+{
+	height:1em;
+	width:100%;
+	margin:2.5em 0px 0.7em 0px;
+	font-size:22px;
+	font-style:italic;
+	font-family:Helvetica;
+}
