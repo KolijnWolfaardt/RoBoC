@@ -16,7 +16,7 @@ A bootloader is a special piece of code that runs before the main code on the IC
 
 The bootloader allows anyone to program the IC without dedicated hardware, using the right software. The bootloader we are using is the ds30 Loader. The specification for the protocol is open source, however, the computer software is closed source, and currently only works on Windows. 	
 
-For more information about the bootloader see [here](bootloader)
+For more information about the bootloader see [here](bootloader.html)
 
 
 

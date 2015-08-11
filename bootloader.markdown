@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "About the Board"
+title:  "Bootloader"
 date:   2015-08-02 12:00:00
 categories: 
 ---
