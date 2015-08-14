@@ -389,8 +389,6 @@ Wire Wire Line
 	3900 4750 4000 4750
 Wire Wire Line
 	5500 4750 5000 4750
-Text Label 5100 4750 0    60   ~ 0
-PCLK
 $Comp
 L +3.3V #PWR09
 U 1 1 55C476CA
@@ -407,4 +405,6 @@ Wire Wire Line
 Wire Wire Line
 	3900 4550 4000 4550
 NoConn ~ 3100 3600
+Text Label 5050 4750 0    60   ~ 0
+XCLK
 $EndSCHEMATC
