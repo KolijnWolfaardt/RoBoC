@@ -22,7 +22,7 @@ $texture1: url('groovepaper.png');
 html
 {
 	min-height:100%;
-	font-family:Roboto;
+	font-family:Roboto, Helvetica;
 	color: $font_color;
 }
 
@@ -40,6 +40,16 @@ html
 		padding-left:10px;
 		padding-right:10px;
 	}
+
+	.header-nav-menu ul
+	{ 
+		width: 100%;
+	}
+
+	.header-banner
+	{	
+		width: 100%;
+	}
 }
 
 @media (min-width: $normal_page_width)
@@ -51,7 +61,18 @@ html
 	.columnText
 	{
 		width: $normal_content_width;
-		padding:80px 30px 150px 150px;
+		padding:80px 100px 150px 150px;
+		line-height:150%;
+	}
+
+	.header-nav-menu ul
+	{ 
+		width: $normal_page_width;
+	}
+
+	.header-banner
+	{	
+		width: $normal_page_width;
 	}
 }
 
@@ -82,9 +103,6 @@ body
 
 .header
 {
-	-webkit-box-shadow:	$drop_shadow_small $drop_shadow_big $drop_shadow_big $drop_shadow_small $shadow_color;
-	-moz-box-shadow:	$drop_shadow_small $drop_shadow_big $drop_shadow_big $drop_shadow_small $shadow_color;
-	box-shadow:			$drop_shadow_small $drop_shadow_big $drop_shadow_big $drop_shadow_small $shadow_color;
 	background-color:$header_background_color;
 	z-index: 30;
 	height:280px;
@@ -104,9 +122,8 @@ body
 
 .header-banner
 {
-	width: $normal_page_width;
 	margin: 0px auto 0px;
-	height:200px;
+	height:199px;
 	z-index: 35;
 }
 
@@ -114,36 +131,45 @@ body
 .header-nav-menu
 {
 	
-	height:80px;
+	height:auto;
 	width:100%;	
 	background-color:$header_background_color;
 	z-index: 35;
 	position:relative;
+
+	-webkit-box-shadow:	0 $drop_shadow_big $drop_shadow_big $drop_shadow_small $shadow_color;
+	-moz-box-shadow:	0 $drop_shadow_big $drop_shadow_big $drop_shadow_small $shadow_color;
+	box-shadow:			0 $drop_shadow_big $drop_shadow_big $drop_shadow_small $shadow_color;
+	background-color:$header_background_color;
 }
 
-.header-nav-menu ul
+.header-nav-menu ul 
 {
 	padding: 0;
-	height:80px;
+	height:auto;
 	border-top: 1px solid $header_bg_color_darker;
-	width: $normal_page_width;
 	margin: 0px auto 0px;
 	z-index: 40;
 	text-shadow: 1px 1px #222;
+
 }
 
 ul li.menuitem
 {
 	display: inline-block;
 	list-style:none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	vertical-align:top;
 }
 
 ul li.menuitem a,
 {
 	display: block;
-	height:40px;
-	width:140px;
-	padding:30px 0px 8px 0;
+	height:60px;
+	width:130px;
+	padding:20px 0 0 0;
 	color:#fff;
 	font-weight: bold;
 	text-decoration:none;
@@ -151,8 +177,6 @@ ul li.menuitem a,
 	z-index: 45;
 	background-color:$header_background_color;
 	text-align: center;
-	background-color:$header_background_color;
-
 	transition-property: background;
 	transition-duration: 0.2s;
 	transition-timing-function: linear;
@@ -211,17 +235,39 @@ h1
 
 h2
 {
-	height:1em;
+	height:0.5em;
 	width:100%;
 	margin:2.5em 0px 1.7em 0px;
-	font-size:22px;
+	font-size:16px;
 	position: relative;
-	left:-20px;
-	font-weight: normal;
+	left:0px;
+	font-weight: bold;
 }
 
 
 footer
 {
 	height:300px;
+}
+
+.highlight
+{
+	background-color:#fff;
+	font:"Courier New";
+	
+	margin:30px 20px;
+	padding:10px;
+	border:1px solid #000;
+}
+
+.cm, .c1
+{
+	color:#1a1;
+}
+
+code span
+{
+	margin:0px;
+	padding:0px;
+	border:0px;
 }

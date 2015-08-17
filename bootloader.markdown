@@ -21,4 +21,4 @@ The changs that were made from the original code is small. The configuration bit
 
 Other Changes
 =============
-The bootloader code is written in assembly, and needs to be compiled using Microchips ASM30 compiler. I used the MPLAB IDE for this, which is MPLAB;s older IDE.
+The bootloader code is written in assembly, and needs to be compiled using Microchips ASM30 compiler. I used the MPLAB IDE for this, which is MPLAB's older IDE.
