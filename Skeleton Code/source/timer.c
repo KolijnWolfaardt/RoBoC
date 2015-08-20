@@ -18,6 +18,7 @@ void setup_timer1()
     T1CONbits.TON       = 1;        //Turn the timer on
 }
 
+
 /*
  * This function configures the oscillator. The main oscillator is driven by an 
  * on-board 10 MHz crystal oscillator. This is first divided by 2, then 

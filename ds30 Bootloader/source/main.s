@@ -119,14 +119,9 @@
 ;------------------------------------------------------------------------------
 ; GOTO user application
 ;------------------------------------------------------------------------------
-
-		.section *, code, address(0x200)
-userStuff: nopr
-			nopr
-
 		.section *, code, address(STARTADDR-4)
-usrapp:	goto userStuff						;these two instructions will be replaced
-								;with a goto to the user application by the pc program
+usrapp:	nopr						;these two instructions will be replaced
+		nopr						;with a goto to the user application by the pc program
 		
 
 ;------------------------------------------------------------------------------
