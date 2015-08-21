@@ -1,6 +1,8 @@
 # RoBoC
 The RoBoC is a robotics controller board designed for the Robotics club of Stellenbosch. It features a dsPIC33 microcontroller, a motor river and plenty of IO pins. This was designed to be cheaper than off the shelf development boards with the necessary extras.
 
+Please see the full documentation at [http://kolijnwolfaardt.github.io/RoBoC/](http://kolijnwolfaardt.github.io/RoBoC/)
+
 # About the PCB Design
 The PCB is designed in [Kicad](www.kicad-pcb.org/). All the project files can be found in *./PCB Design*, and the extra component footprints created are in *./PCB Design/lib*. Some of these components are adapted from the libraries supplied with KiCad. 
 
