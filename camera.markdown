@@ -38,3 +38,4 @@ The PIC is not fast enough to sample a full frame from the camera. Instead only 
 
 When the command is received to sample a frame, external interrupt is enabled. This will cause an interrupt as soon as the vsync line indicates a new frame. The interrupt in turn enables the href interrupt, which will cause an interrupt for every href pulse. This interrupt enables timer 5. Timer 5 counts from the external pin which is connected to the pixel clock line. When this interrupt is triggered the PIC samples a value.
 
+

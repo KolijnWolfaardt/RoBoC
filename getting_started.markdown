@@ -48,15 +48,31 @@ Next we are going to create folders for the .c and .h files. The IDE likes placi
 * Copy the skeleton code into the folder
 * In MPLABX you should see the project navigator to the left. If the project is minimized, open it. Right-click on the _Header Files_ option, and select _Add Existing item_. In your project folder, open the include folder and select all the files.
 * Do the same for the _Source Files_ option, this time selecting files from the source folder.
-* We must create a main file for the project. Go to File - New File. Select _C Main File_ as the type, from the C category.
+* The project requires a main file. There is one included with the skeleton code. This will be the starting point for all your code.
 
-![Screeshot: Adding a new File](./images/tutorial/4_new_file.png)
 
-* Name the file main, and change the folder to _source_
+You should now have an empty project, ready for your code. 
 
-You should now have an empty project, ready for your code. You will still need to make some changes to your main file before the code will work on the microcontroller.
 
-Additional Notes
-----------------
-* To change project in MPLAPX, right click the project in the Project explorer, and click _Set as main project_
-				
+Compiling and Programming the device
+---------------------------------------
+To compile the project, click the compile button at the top of MPLABX
+
+![Screenshot: Compile Buttons](./images/tutorial/5_compile.png)
+
+If everything is configured correctly, this should compile the project, and output a hex file. The location of the hex file will be shown in the console output at the bottom.
+
+Now open the ds30 bootloader program. There is a terminal and a gui version. You will be presented with a screen like this:
+
+![Screeshot: ds30 Bootloader](./images/tutorial/6_ds30.png)
+
+Configure all the settings:
+ 
+ * Set the path for the hex file.
+ * Set the device, dsPIC33FJ32GS606
+ * The baud rate is set to 57600.
+ * Tick the write flash checkbox
+
+ To program the RoBoC board, hold the board in reset by pressing the reset button next to the USB connection. Click write on the ds30 program, and release the board from reset.
+
+ The board should now be programmed with your code. To get started with the skeleton code, see [here](skeleton_code.html)
