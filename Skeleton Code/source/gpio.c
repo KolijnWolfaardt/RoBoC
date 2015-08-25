@@ -2,7 +2,7 @@
 #include "gpio.h"
 
 void setup_gpio();
-void ledWrite(int num);
+void led_write(int num);
 
 void setup_gpio()
 {
@@ -38,7 +38,7 @@ void setup_gpio()
     PORTBbits.RB11 = 0;    
 }
 
-void ledWrite(int num)
+void led_write(int num)
 {
     LED5 = (num&0x01);
     LED4 = ((num>>1)&0x01);

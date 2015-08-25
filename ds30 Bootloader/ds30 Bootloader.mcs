@@ -40,19 +40,6 @@ SuiteArgsString=
 ToolArgsString=-Map="$(BINDIR_)$(TARGETBASE).map" --report-mem -o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)"
 TraceCmdString=
 DebugOptions=
-[File003]
-Location=
-Folder=Output
-DeviceName=dsPIC33FJ32GS606
-LanguageToolSuiteID={F62E444C-B232-4066-9AB0-A6F4E5261396}
-LanguageToolID={433C3D55-811D-409D-A6BF-159CF9355B42}
-LanguageToolLocation=C:\Program Files (x86)\Microchip\MPLAB ASM30 Suite\bin\pic30-ld.exe
-PPAD=$(BINDIR)|./outputs||$(TMPDIR)|./outputs||$(AINDIR)|./source;./include||$(INCDIR)||$(LIBDIR)|./source;./include||$(LKRDIR)||
-SOLK=<src>|source\ds30loader.s||<obj>||<lib>||<lkr>|include\p33FJ32GS606.gld||
-SuiteArgsString=
-ToolArgsString=-Map="$(BINDIR_)$(TARGETBASE).map" --report-mem -o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)"
-TraceCmdString=
-DebugOptions=
 [TOOL_LOC_STAMPS]
 tool_loc{DE18EB1A-B46B-486B-B96F-A811A635DFAC}=C:\Program Files (x86)\Microchip\MPLAB ASM30 Suite\bin\pic30-as.exe
 tool_loc{433C3D55-811D-409D-A6BF-159CF9355B42}=C:\Program Files (x86)\Microchip\MPLAB ASM30 Suite\bin\pic30-ld.exe

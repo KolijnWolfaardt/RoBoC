@@ -14,7 +14,6 @@ void set_servo_1(int value);
 void set_servo_2(int value);
 void set_motor_1(int direction, int speed);
 void set_motor_2(int direction, int speed);
-void enable_rck_out();
 
 /*
  *  Regarding the hardware and the connections
@@ -252,12 +251,4 @@ void set_motor_2(int direction, int speed)
         IOCON2 = (IOCON2 & 0xfc3f)| 0b1100<<6;
         PDC2 =0;
     }
-    //And calculate the period value
-    
-    
-}
-
-void enable_rck_out()
-{
-    
 }

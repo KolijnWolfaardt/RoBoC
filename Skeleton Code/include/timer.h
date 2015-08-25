@@ -8,8 +8,11 @@
 #ifndef TIMER_H
 #define	TIMER_H
 
-void setup_timer1();
+void setup_timer_1();
+void delay();
+int  millis();
 void configure_oscillator();
+
 
 #endif
 

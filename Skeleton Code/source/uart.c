@@ -21,6 +21,12 @@ char tx_flag  = 0;
 int  tx_read  = 0;
 int  tx_write = 0;
 
+
+/*
+ * This function configures the UART. It sets the UART up for a buad rate of 
+ * 1640000. This is a custom rate, but most computers will be able to handle this
+ * This high speed is used to quickly send camera data to the computer.
+ */
 void setup_uart()
 {
     U1MODEbits.UARTEN   = 0;        //Turn the UART off
@@ -59,9 +65,9 @@ void setup_uart()
     
 }
 
-/*This function copies a given array to the transmit buffer. If a transmission 
+/*
+ * This function copies a given array to the transmit buffer. If a transmission 
  * was ongoing, it should continue. If it wasn't, this function should start it.
- * 
  */
 void send_array(char data[],int length)
 {
@@ -89,6 +95,11 @@ void send_array(char data[],int length)
     }
 }
 
+/*
+ * This function is only used by the camera, when transmitting data to the PC.
+ * The camera capture load data directly into the tx_buffer, and then calls this
+ * function to transmit the data.
+ */
 void send_special(int number)
 {
     tx_read=1;
@@ -97,6 +108,10 @@ void send_special(int number)
     U1TXREG = tx_buffer[0];
 }
 
+/*
+ * This function converts an integer value to a decimal value, then adds it to 
+ * the transmit buffer.
+ */
 void send_number(int number)
 {
     char hexArr[4];
@@ -126,6 +141,9 @@ void send_number(int number)
     send_array(hexArr,4);
 }
 
+/*
+ * Send a single value, disregarding the transmit buffer.
+ */
 void send_value(int txValue)
 {
     U1TXREG = txValue;// & 0xff;

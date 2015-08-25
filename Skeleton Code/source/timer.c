@@ -1,21 +1,49 @@
 #include <xc.h>
+#include "gpio.h"
 
-void setup_timer1();
+void setup_timer_1();
+void delay();
+int  millis();
+void configure_oscillator();
 
-void setup_timer1()
+int milliseconds=0;
+
+void setup_timer_1()
 {
     T1CONbits.TON       = 0;        //Turn the timer off
     T1CONbits.TSIDL     = 0;        //Continue in idle mode
     T1CONbits.TGATE     = 0;        //Gated time accumulation is disabled
-    T1CONbits.TCKPS     = 0b1;      //1 pre scaler
+    T1CONbits.TCKPS     = 0b01;     //Pre scaler of 8
     T1CONbits.TSYNC     = 0;        //This bit is ignored
     T1CONbits.TCS       = 0;        //Use the internal clock    
-    PR1                 = 10000;
+    PR1                 = 3280;     // Calculated and then fine-tuned
     
     IFS0bits.T1IF       = 0;        //Clear flag
     IEC0bits.T1IE       = 1;        //Enable the interrupt
     
     T1CONbits.TON       = 1;        //Turn the timer on
+}
+
+/*
+ * Timer 1 interrupt vector
+ */
+void __attribute__((interrupt(auto_psv))) _T1Interrupt(void)
+{
+    milliseconds++;
+    if (milliseconds > 999)
+        milliseconds = 0;
+    IFS0bits.T1IF       = 0;        //Clear flag
+}
+
+void delay()
+{
+    int i;
+    for (i=0; i< 1000; i++);
+}
+
+int millis()
+{
+    return milliseconds;
 }
 
 

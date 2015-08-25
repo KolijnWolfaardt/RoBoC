@@ -11,10 +11,18 @@
 void setup_camera();
 void capture_camera();
 
+#define GAIN 0x00
+#define BLUE 0x01
+#define RED  0x02
+#define AECHH 0x07
+#define AECHH_MASK 0x17
+
+
+#define CAM_DEVICE_ID 0x21
+
 #define COM3 0x0C
 #define COM3_ENABLE_SCALING 0x04
 #define COM3_DCW_ENABLE 0x02
-
 
 #define COM7 0x12
 #define COM7_SCCB_RESET 0x80
@@ -38,6 +46,8 @@ void capture_camera();
 #define COM15_RANGE2 0xC0
 #define COM15_RGB_565 0x10
 #define COM15_RGB_555 0x30
+
+#define COM9 0x14
 
 #define COM10 0x15
 #define COM10_SELECT HSYNC 0x40
@@ -65,6 +75,25 @@ void capture_camera();
 #define COM8_AGC_ENABLE 0x04
 #define COM8_AWB_ENABLE 0x20
 #define COM8_AEC_ENABLE 0x01
+
+#define PSHIFT 0x1B
+
+#define SCALING_PCLK_DIV 0x73
+#define SCALING_PCLK_DIV_ENABLE 0x18
+#define SCALING_PCLK_DIV_DIV2 0x1
+#define SCALING_PCLK_DIV_DIV4 0x2
+#define SCALING_PCLK_DIV_DIV8 0x3
+#define SCALING_PCLK_DIV_DIV16 0x4
+
+
+#define DBLV 0x6B
+#define DBLV_PLL_x1 0x00
+#define DBLV_PLL_x4 0x40
+#define DBLV_PLL_x8 0x80
+#define DBLV_PLL_x16 0xC
+
+#define CLKRC 0x11
+#define CLKRC_DOUBLE_CLK 0x80
 
 #endif	/* CAMERA_H */
 

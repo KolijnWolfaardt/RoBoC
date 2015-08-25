@@ -50,7 +50,7 @@
 #define SPISS PORTEbits.RE6
 
 void setup_gpio();
-void ledWrite(int num);
+void led_write(int num);
 
 #endif
 

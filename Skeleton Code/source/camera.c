@@ -2,7 +2,7 @@
 #include "gpio.h"
 #include "uart.h"
 #include "camera.h"
-#define CAM_DEVICE_ID 0x21
+#include "timer.h"
 #define indicate0 LATGbits.LATG7 = 0
 #define indicate1  LATGbits.LATG7 = 1
 
@@ -16,13 +16,18 @@ int cam_pixel_counter = 0;
 
 int i2c_flag = 0;
 
-char mess1[] = "Address: "; //9
-char mess2[] = " Data: "; //7
-char mess3[] = "\n\r"; //1
 char zeros[] = {0,0,0,0,0};
 
 void setup_camera()
 {
+    //Enable the camera module.
+    RESET = 1;
+    PWDN = 0;
+    
+    //The camera requires a delay before it can be communicated with.
+    int i=0;
+    for (i=0;i<30000;i++);
+    
     //Setup Timer5 to count th pClk inputs
     T5CONbits.TSIDL         = 0;        //Continue in Idle mode;
     T5CONbits.TGATE         = 0;        //Gated mode disabled, but this bit is ignored
@@ -59,34 +64,19 @@ void setup_camera()
     IFS1bits.MI2C1IF        = 0;        //Clear the flag
     IEC1bits.MI2C1IE        = 1;        //Enable the interrupts
     
-    int result = 0;
-      
-    result = read_camera_register(COM7);
-
-    send_array(mess1,9);
-    send_number(COM7);
-    send_array(mess2,7);
-    send_number(result);
-    send_array(mess3,2);
-    
     //Setup very small resolution, very small screen
     write_camera_register(COM3,COM3_ENABLE_SCALING);
-    write_camera_register(COM7, COM7_SELECT_QCIF | COM7_RGB); // Select QVGA and RGB mode
+    write_camera_register(COM7, COM7_SELECT_QCIF | COM7_YUV); // Select QVGA and RGB mode
     write_camera_register(COM10,COM10_PCLK_STILL); // Disable the PCLK during horizontal blank
-    write_camera_register(COM8,0x00); //Disable AGC, AWB, and AEC
-    write_camera_register(0x1B,0x0);
+    write_camera_register(COM8, COM8_AGC_ENABLE | COM8_AEC_ENABLE | COM8_AWB_ENABLE); //Disable AGC, AWB, and AEC
+    //write_camera_register(COM8, 0x00); //Disable AGC, AWB, and AEC
+    write_camera_register(0x1B,0x0);    //NoDelay
     write_camera_register(0x2A,0x5C);
     write_camera_register(0x2B,0x55);
-    
-
-    result = read_camera_register(COM7);
-
-    send_array(mess1,9);
-    send_number(COM7);
-    send_array(mess2,7);
-    send_number(result);
-    send_array(mess3,2);
-    
+    write_camera_register(COM9,0b000); //AGC limit to 2x
+    write_camera_register(DBLV,DBLV_PLL_x8); //Set the PLL to 4x, up to 40MHz
+    //write_camera_register(SCALING_PCLK_DIV,SCALING_PCLK_DIV_ENABLE | SCALING_PCLK_DIV_DIV4);
+    write_camera_register(CLKRC,0x01);
 }
 
 char read_camera_register(char addr)
@@ -167,21 +157,33 @@ void write_camera_register(char address, char data)
 }
 
 
-
+/*
+ * Call this function to capture and send one frame of the camera. This
+ * function writes data directly to the tx_buffer, so make sure transmission was
+ * finished before calling this function.
+ */
 void capture_camera()
 {
+    //Reset the number of horizontal lines that have passed.
     cam_href_counter = 0;
     
-    
-    //Enable the Vref interrupt
+    //Wait for a vertical sync
     IFS1bits.INT2IF     = 0;    //Clear the flag
     IEC1bits.INT2IE     = 1;    //Enable the interrupt
+    int prevmillis = millis();
+    while (prevmillis == millis()); //wait for them to be different
 
-    while (cam_href_counter<140); //wait. Interrupts do the rest
+    //The counter is incremented by the interrupt functions.
+    //This while should probably have a reset, waiting for a certain time or 
+    //until another v_sync pulse is detected.
+    while (cam_href_counter<140 && prevmillis != millis()); //wait. Interrupts do the rest
     
     //disable both
     IEC1bits.INT1IE     = 0;
     T5CONbits.TON       = 0;
+    
+    //Read some value from the camera, and write them back
+    
     
     cam_href_counter = 0;
     
@@ -203,15 +205,18 @@ void __attribute__((interrupt(auto_psv))) _INT2Interrupt(void)
 //This will fire when href goes from low to high.
 void __attribute__((interrupt(auto_psv))) _INT1Interrupt(void)
 {
-    indicate0;
+    indicate1;
     
     IFS1bits.INT1IF = 0; //Clear the flag
     //IEC1bits.INT1IE = 0; //Disable the interrupt
 
-    if (cam_href_counter%3 == 0)
+    indicate0;
+    
+    if (cam_href_counter%2 == 0)
     {
-        while (PCLK == 1);
-        while (PCLK == 0);
+        //This is required to delay until the second byte,
+//        while (PCLK == 1);
+//        while (PCLK == 0);
         cam_pixel_counter  = 0;
         TMR5 = 0;   //Clear the timer
         IFS1bits.T5IF = 0;  //Clear the flag
@@ -220,21 +225,21 @@ void __attribute__((interrupt(auto_psv))) _INT1Interrupt(void)
     }
     cam_href_counter++;
     
-    indicate1;
 }
 
 void __attribute__((interrupt(auto_psv))) _T5Interrupt(void)
 {   
+    
     LATEbits.LATE6  = 1;
     tx_buffer[cam_pixel_counter]=PORTD;
     IFS1bits.T5IF       = 0;        //Clear flag 
     
     cam_pixel_counter++;
     
-    if (cam_pixel_counter >= 240)
+    if (cam_pixel_counter >= 88)
     {
         IEC1bits.T5IE = 0;  //Disable the Timer5 interrupt
-        send_special(240);
+        send_special(88);
     }
     LATEbits.LATE6  = 0;
 
